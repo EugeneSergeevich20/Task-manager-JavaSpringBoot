@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -42,5 +43,16 @@ public class UserServiceImpl implements UserService{
     @Override
     public User getAuthUser() {
         return userDetailsService.getAuthUser();
+    }
+
+    @Override
+    public void updateUser(User userOld, User userUpdate) {
+
+        userOld.setName(userUpdate.getName());
+        userOld.setSurname(userUpdate.getSurname());
+        userOld.setPatronymic(userUpdate.getPatronymic());
+        userOld.setEmail(userUpdate.getEmail());
+
+        userRepository.save(userOld);
     }
 }

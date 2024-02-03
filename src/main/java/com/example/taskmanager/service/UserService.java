@@ -16,4 +16,11 @@ public interface UserService {
      */
     User getAuthUser();
 
+    /***
+     * Редактирование информации пользователя
+     * @param userOld
+     * @param userUpdate
+     */
+    void updateUser(User userOld, User userUpdate);
+
 }

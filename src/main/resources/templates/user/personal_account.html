@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+</head>
+<body>
+
+  <div>
+    <p th:text="${'Личный кабинет - ' + user.name + ' ' + user.surname}"></p> <br>
+
+      <form th:method="POST" th:action="@{/user/edit-process}" th:object="${user}">
+
+          <input type="text" th:field="*{name}">
+          </br>
+          <input type="text" th:field="*{surname}">
+          </br>
+          <input type="text" th:field="*{patronymic}">
+          </br>
+          <input type="text" th:field="*{email}">
+          </br>
+          <input type="submit" th:value="${'Сохранить изменения'}">
+          </br>
+
+      </form>
+
+  </div>
+
+</body>
+</html>

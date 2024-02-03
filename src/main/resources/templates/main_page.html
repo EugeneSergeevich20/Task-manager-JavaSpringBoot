@@ -5,11 +5,30 @@
     <title>Welcome</title>
 </head>
 <body>
-Welcome, <p th:text="${user.name + ' ' + user.surname}"></p>!
 
-<form th:method="POST" th:action="@{/logout}">
-  <input type="submit" th:value="Выйти">
-</form>
+<div th:if="${user != null}">
+Welcome, <p th:text="${user.name + ' ' + user.surname}"></p>!
+</div>
+<div th:if="${user == null}">
+    Welcome!
+</div>
+
+</br>
+
+<div th:if="${user != null}">
+    <a th:href="@{/user/personal-cabinet}" th:text="${'Личный кабинет'}"></a>
+</div>
+<div th:if="${user == null}">
+    <a th:href="@{/auth/login}" th:text="Войти"></a>
+</div>
+
+</br>
+
+<div th:if="${user != null}">
+    <form th:method="POST" th:action="@{/logout}">
+        <input type="submit" th:value="Выйти">
+    </form>
+</div>
 
 </body>
 </html>
