@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -43,6 +44,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     public Role role;
+
+    @ManyToMany
+    public List<Project> project;
 
 
 }
