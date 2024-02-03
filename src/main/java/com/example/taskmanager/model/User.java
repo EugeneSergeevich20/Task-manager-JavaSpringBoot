@@ -8,7 +8,7 @@ import java.util.List;
 
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -45,7 +45,7 @@ public class User {
     @Column(name = "role")
     public Role role;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "user")
     public List<Project> project;
 
 

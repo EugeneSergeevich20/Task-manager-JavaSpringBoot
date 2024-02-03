@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Project</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/projects/add-project-process}" th:object="${project}">
+
+    <input type="text" placeholder="Наименование проекта" th:field="*{name}">
+    </br>
+    <input type="text" placeholder="Описание проекта" th:field="*{description}">
+    </br>
+    <input type="submit" th:value="${'Добавить проект'}">
+    </br>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects</title>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Наименование проекта</th>
+        <th>Описание проекта</th>
+    </tr>
+    <tr th:each="project : ${projects}">
+        <th>
+            <a th:text="*{project.name}" th:href="@{/projects/{id}(id = ${project.getID()})}"></a>
+        </th>
+        <th th:text="*{project.description}"></th>
+    </tr>
+</table>
+<br>
+<a th:href="@{/projects/add-project}" th:text="*{'Добавить проект'}"></a>
+</body>
+</html>

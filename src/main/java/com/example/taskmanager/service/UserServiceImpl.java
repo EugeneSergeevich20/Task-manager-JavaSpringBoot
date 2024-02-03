@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -34,6 +35,7 @@ public class UserServiceImpl implements UserService{
                 .login(user.getLogin())
                 .password(passwordEncoder.encode(user.getPassword()))
                 .registrationDate(LocalDateTime.now())
+                .project(new ArrayList<>())
                 .role(Role.ROLE_CLIENT)
                 .build();
 

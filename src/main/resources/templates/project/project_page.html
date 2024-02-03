@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${project.name}">Project</title>
+</head>
+<body>
+<p th:text="${'Проект - ' + project.name}"></p> <br>
+<p th:text="${'Описание - ' + project.description}"></p> <br>
+
+<form th:method="POST" th:action="@{/projects/delete-process/{id}(id = ${project.ID})}">
+    <input type="submit" th:value="${'Удалить проект'}">
+</form>
+
+</body>
+</html>
