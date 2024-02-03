@@ -3,6 +3,9 @@ package com.example.taskmanager.service.security;
 import com.example.taskmanager.model.User;
 import com.example.taskmanager.repository.UserRepository;
 import com.example.taskmanager.security.UserDetailsImpl;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -31,4 +34,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         return new UserDetailsImpl(user.get());
     }
+
+    public User getAuthUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetailsImpl userDerails;
+
+        if (authentication instanceof AnonymousAuthenticationToken)
+            return null;
+        else
+            userDerails = (UserDetailsImpl) authentication.getPrincipal();
+        return userDerails.getUser();
+    }
+
 }

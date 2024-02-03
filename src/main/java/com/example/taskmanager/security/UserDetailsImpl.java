@@ -50,4 +50,9 @@ public class UserDetailsImpl implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    //Нужно, чтобы получать данные аутентифицированного пользователя
+    public User getUser() {
+        return this.user;
+    }
 }
