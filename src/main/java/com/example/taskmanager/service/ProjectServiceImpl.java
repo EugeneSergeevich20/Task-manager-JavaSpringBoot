@@ -62,4 +62,21 @@ public class ProjectServiceImpl implements ProjectService{
 
         projectRepository.save(projectOld);
     }
+
+    /*TODO: Метод для подключение нового пользователя к проекту,
+    *  пока тестовый вариант, чтобы проверить как будет добавляться в БД
+    *  метод работает, вроде, норм, но скорее всего нужно будет менять
+    *  под другой функционал для пользовательского интерфейса.
+    *  Так же создать новый метод для UserService для получения пользователей к проекту
+    *  (Сейчас передаются все пользователи, нужно исключить АДМИНОВ и тех кто уже подключен к проекту)
+    * */
+    @Override
+    public void addUserToProject(Long id, User user) {
+
+        Project project = projectRepository.findById(id).get();
+
+        project.user.add(user);
+
+        projectRepository.save(project);
+    }
 }

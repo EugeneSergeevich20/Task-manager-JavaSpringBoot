@@ -41,4 +41,11 @@ public interface ProjectService {
      */
     void updateProject(Long id, Project projectUpdate);
 
+    /***
+     * Подключение нового пользователя к проекту
+     * @param id
+     * @param user
+     */
+    void addUserToProject(Long id, User user);
+
 }

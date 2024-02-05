@@ -20,9 +20,21 @@
 <p th:text="${'Проект - ' + project.name}"></p> <br>
 <p th:text="${'Описание - ' + project.description}"></p> <br>
 
+<form th:method="POST" th:action="@{/projects/add-user/{id}(id = ${project.getID()})}" th:object="${user_add}">
+    <select th:object="${user_add}" th:field="*{ID}">
+        <option th:each="user : ${users}" th:value="${user.getID()}" th:text="${user.name + ' ' + user.surname}" ></option>
+    </select>
+    <input type="submit" th:value="${'Подключить нового пользователя к проекту'}">
+
+</form>
+
+
+
 <form th:method="POST" th:action="@{/projects/delete-process/{id}(id = ${project.ID})}">
     <input type="submit" th:value="${'Удалить проект'}">
 </form>
+
+
 
 </body>
 </html>

@@ -38,7 +38,18 @@ public class ProjectController {
     @GetMapping("{id}")
     public String projectPage(@PathVariable("id") Long id, Model model){
 
+        // для передачи информации на представление
         model.addAttribute("project", projectService.getProjectById(id));
+
+        // для передачи информации о всех пользователях
+        model.addAttribute("users", userService.getAllUsers());
+
+        /* нужно для того, чтобы подключить нового пользователя к проекту
+            (Передаётся пустой пользователь, в select выберается пользователь, передаёт для user_add значение ID
+            , затем отправляется user_add только ID на сервер и из БД уже получаем User со всеми данными по ID)
+         */
+        //TODO: возможно придумать другой вариант выбора пользователя для подключения к проекту
+        model.addAttribute("user_add", new User());
 
         return "project/project_page";
     }
@@ -67,6 +78,21 @@ public class ProjectController {
     @PostMapping("edit-process/{id}")
     public String editProject(@PathVariable("id") Long id, @ModelAttribute("project") Project project){
         projectService.updateProject(id, project);
+        return "redirect:/projects/" + id;
+    }
+
+    @PostMapping("add-user/{id}")
+    public String addUserToProject(@PathVariable("id") Long id, @ModelAttribute("user_add") User user){
+
+        User userAdd = userService.getUserById(user.getID());
+
+        if (userAdd != null){
+            projectService.addUserToProject(id, userAdd);
+        }
+        else {
+            return "error/error_account"; // пока временная страница для ошибки
+        }
+
         return "redirect:/projects/" + id;
     }
 }
