@@ -5,6 +5,18 @@
     <title th:text="${project.name}">Project</title>
 </head>
 <body>
+
+<form th:method="POST" th:action="@{/projects/edit-process/{id}(id = ${project.getID()})}" th:object="${project}">
+
+    <input type="text" th:field="*{name}">
+    </br>
+    <input type="text" th:field="*{description}">
+    </br>
+    <input type="submit" th:value="${'Сохранить изменения'}">
+    </br>
+
+</form>
+
 <p th:text="${'Проект - ' + project.name}"></p> <br>
 <p th:text="${'Описание - ' + project.description}"></p> <br>
 

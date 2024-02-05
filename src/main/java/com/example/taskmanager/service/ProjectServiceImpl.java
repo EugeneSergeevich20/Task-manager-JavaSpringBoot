@@ -53,7 +53,9 @@ public class ProjectServiceImpl implements ProjectService{
     }
 
     @Override
-    public void updateProject(Project projectOld, Project projectUpdate) {
+    public void updateProject(Long id, Project projectUpdate) {
+
+        Project projectOld = projectRepository.findById(id).get();
 
         projectOld.setName(projectUpdate.getName());
         projectOld.setDescription(projectUpdate.getDescription());

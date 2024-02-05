@@ -36,9 +36,9 @@ public interface ProjectService {
 
     /***
      * Редактирование проекта
-     * @param projectOld
+     * @param id
      * @param projectUpdate
      */
-    void updateProject(Project projectOld, Project projectUpdate);
+    void updateProject(Long id, Project projectUpdate);
 
 }

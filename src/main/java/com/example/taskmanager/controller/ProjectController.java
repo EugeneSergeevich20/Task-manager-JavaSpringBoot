@@ -63,4 +63,10 @@ public class ProjectController {
         projectService.deleteProject(id);
         return "redirect:/projects/user-projects";
     }
+
+    @PostMapping("edit-process/{id}")
+    public String editProject(@PathVariable("id") Long id, @ModelAttribute("project") Project project){
+        projectService.updateProject(id, project);
+        return "redirect:/projects/" + id;
+    }
 }
