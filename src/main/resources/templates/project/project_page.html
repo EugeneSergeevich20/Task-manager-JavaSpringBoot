@@ -34,6 +34,8 @@
     <input type="submit" th:value="${'Удалить проект'}">
 </form>
 
+</br>
+<a th:href="@{/task/{project_id}/add-task(project_id=${project.ID})}" th:text="${'Добавить задачу'}"></a>
 
 
 </body>

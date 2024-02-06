@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Task</title>
+</head>
+<body>
+
+<p th:text="${'Добавление новой задачи для проекта ' + project.name}"></p>
+
+<form th:method="POST" th:action="@{/task/add-task-process/{id}(id = ${project.ID})}" th:object="${task}">
+
+    <input type="text" placeholder="Название задачи" th:field="*{title}">
+    </br>
+    <input type="text" placeholder="Описание задачи" th:field="*{description}">
+    </br>
+    <!--<label for="deadline">Срок выполнения задачи</label>
+    <input type="datetime-local" th:field="*{deadline}" id="deadline">
+    </br>-->
+    <input type="submit" th:value="${'Добавить задачу'}">
+    </br>
+
+</form>
+
+</body>
+</html>
