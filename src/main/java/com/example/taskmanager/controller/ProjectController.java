@@ -3,6 +3,7 @@ package com.example.taskmanager.controller;
 import com.example.taskmanager.model.Project;
 import com.example.taskmanager.model.User;
 import com.example.taskmanager.service.ProjectServiceImpl;
+import com.example.taskmanager.service.TaskServiceImpl;
 import com.example.taskmanager.service.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +15,12 @@ public class ProjectController {
 
     private final ProjectServiceImpl projectService;
     private final UserServiceImpl userService;
+    private final TaskServiceImpl taskService;
 
-    public ProjectController(ProjectServiceImpl projectService, UserServiceImpl userService) {
+    public ProjectController(ProjectServiceImpl projectService, UserServiceImpl userService, TaskServiceImpl taskService) {
         this.projectService = projectService;
         this.userService = userService;
+        this.taskService = taskService;
     }
 
     @GetMapping("user-projects")
@@ -50,6 +53,8 @@ public class ProjectController {
          */
         //TODO: возможно придумать другой вариант выбора пользователя для подключения к проекту
         model.addAttribute("user_add", new User());
+
+        model.addAttribute("tasks", taskService.getTasks(id));
 
         return "project/project_page";
     }

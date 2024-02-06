@@ -36,6 +36,22 @@
 
 </br>
 <a th:href="@{/task/{project_id}/add-task(project_id=${project.ID})}" th:text="${'Добавить задачу'}"></a>
+</br>
+
+<table>
+    <tr>
+        <th>Наименование задачи</th>
+        <th>Статус</th>
+        <th>Приоритет</th>
+    </tr>
+    <tr th:each="task : ${tasks}">
+        <th >
+            <a th:text="*{task.title}" th:href="@{/task/{id}(id = ${task.ID})}"></a>
+        </th>
+        <th th:text="*{task.status}"></th>
+        <th th:text="*{task.priority}"></th>
+    </tr>
+</table>
 
 
 </body>

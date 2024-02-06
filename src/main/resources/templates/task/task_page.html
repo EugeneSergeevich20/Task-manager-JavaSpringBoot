@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+</head>
+<body>
+
+<p th:text="${'Задача - ' + task.title}"></p> <br>
+<p th:text="${'Описание - ' + task.description}"></p> <br>
+<p th:text="${'Статус - ' + task.status}"></p> <br>
+<p th:text="${'Приоритет - ' + task.priority}"></p> <br>
+<p th:text="${'Дата создания - ' + task.createDate}"></p> <br>
+<p th:text="${'Срок выполнения - ' + task.deadline}"></p> <br>
+
+<form th:method="POST" th:action="@{/task/delete-task/{id}(id = ${task.ID})}">
+    <input type="submit" th:text="${'Удалить задачу'}">
+</form>
+
+</body>
+</html>

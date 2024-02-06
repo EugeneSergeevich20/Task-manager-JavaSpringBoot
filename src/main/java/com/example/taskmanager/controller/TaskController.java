@@ -39,4 +39,22 @@ public class TaskController {
         return "redirect:/projects/" + projectID;
     }
 
+    @GetMapping("{id}")
+    public String taskPage(@PathVariable("id") Long id, Model model){
+
+        model.addAttribute("task", taskService.getTaskById(id));
+
+        return "task/task_page";
+    }
+
+    @PostMapping("delete-task/{id}")
+    public String deleteTask(@PathVariable("id") Long id){
+
+        Long projectID = taskService.getTaskById(id).project.getID();
+
+        taskService.deleteTask(id);
+
+        return "redirect:/projects/" + projectID;
+    }
+
 }
