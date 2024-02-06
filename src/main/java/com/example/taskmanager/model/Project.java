@@ -35,4 +35,7 @@ public class Project {
     inverseJoinColumns = @JoinColumn(name = "user_id"))
     public List<User> user;
 
+    @OneToMany(mappedBy = "project")
+    public List<Task> tasks;
+
 }
