@@ -2,28 +2,35 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>regist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="/css/registr.css" />
 </head>
 <body>
-
-<form th:method="POST" th:action="@{/auth/register-process}" th:object="${userReg}">
-
-  <input type="text" placeholder="Введите имя" th:field="*{name}">
-  </br>
-  <input type="text" placeholder="Введите фамилию" th:field="*{surname}">
-  </br>
-  <input type="text" placeholder="Введите отчество" th:field="*{patronymic}">
-  </br>
-  <input type="text" placeholder="Введите почту" th:field="*{email}">
-  </br>
-  <input type="text" placeholder="Введите логин" th:field="*{login}">
-  </br>
-  <input type="password" placeholder="Введите пароль" th:field="*{password}">
-  </br>
-  <input type="submit" th:value="Регистрация">
-  </br>
-
-</form>
-
+    <section class="main">
+        <h1>РЕГИСТРАЦИЯ</h1>
+        <form class="form" th:method="POST" th:action="@{/auth/register-process}" th:object="${userReg}">
+            <div class="part1">
+                <input class="form_surname" type="text" placeholder="ВАШЕ ФАМИЛИЯ" th:field="*{surname}">
+                <input class="form_name" type="text" placeholder="ВАШЕ ИМЯ" th:field="*{name}">
+                <input class="form_patronymic" type="text" placeholder="ВАШЕ ОТЧЕСТВО" th:field="*{patronymic}">
+            </div>
+            <div class="part2">
+                <input type="text"  placeholder="EMAIL" th:field="*{email}">
+                <input type="text"  placeholder="GITHUB">
+            </div>
+            <div class="part3">
+                <input class="form_login" type="text" placeholder="ЛОГИН" th:field="*{login}">
+                <input class="form_pass" type="password" placeholder="ПАРОЛЬ" th:field="*{password}">
+                <input class="form_pass" type="password" placeholder="ПОВТОРИТЕ ПАРОЛЬ">
+            </div>
+            <input class="form_btn" type="button" value="ЗАРЕГИСТРИРОВАТЬСЯ">
+        </form>
+    </section>
 </body>
 </html>
